@@ -8,52 +8,35 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity2 extends AppCompatActivity {
+
+    Button zomboid, zomboid2,zomboid3,zomboid4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        Button btnOpenYouTube = findViewById(R.id.btnOpenYouTube);
-        Button btnOpenFacebook = findViewById(R.id.btnOpenFacebook);
-
-        btnOpenYouTube.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String youtubeChannelUrl = "https://www.youtube.com/watch?v=eoJEn7MDht0&list=RDUIg8t122Fso&index=2";
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(youtubeChannelUrl));
-
-                if (intent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(intent);
-                } else {
-                    String youtubeWebUrl = "https://www.youtube.com/user/CanalDeEjemplo";
-                    Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(youtubeWebUrl));
-                    startActivity(webIntent);
-                }
-            }
-        });
-
-        btnOpenFacebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openFacebookPage("https://www.facebook.com/InventarioOculto");
-            }
-        });
+        zomboid=findViewById(R.id.zomboid);
+    }
+    public void pantalla_zomboid(View view)
+    {
+        Intent i=new Intent(this, MainActivity3.class);
+        startActivity(i);
+    }
+    public void west_point(View view)
+    {
+        Intent e=new Intent(this, MainActivity4.class);
+        startActivity(e);
     }
 
-    private void openFacebookPage(String username) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        String facebookUrl = getFacebookPageURL(username);
-        intent.setData(Uri.parse(facebookUrl));
-
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        } else {
-            intent.setData(Uri.parse("https://www.facebook.com/" + username));
-            startActivity(intent);
-        }
+    public void raven_creek(View view)
+    {
+        Intent e=new Intent(this, MainActivity5.class);
+        startActivity(e);
+    }
+    public void wood(View view)
+    {
+        Intent e=new Intent(this, MainActivity6.class);
+        startActivity(e);
     }
 
-    private String getFacebookPageURL(String username) {
-        return "https://www.facebook.com/" + username;
-    }
 }
